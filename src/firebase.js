@@ -1,3 +1,5 @@
+/** @format */
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -11,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "chat-react-913d2.appspot.com",
   messagingSenderId: "557492118940",
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: "G-HPBCPHNWJ8"
+  measurementId: "G-HPBCPHNWJ8",
 };
 
 // Initialize Firebase

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+/** @format */
+
+import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth, storage, db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,62 +18,62 @@ export const Register = () => {
     const file = e.target[3].files[0];
 
     try {
-      const res = await createUserWithEmailAndPassword(auth, email, password)
+      const res = await createUserWithEmailAndPassword(auth, email, password);
       const storageRef = ref(storage, displayName);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on('state_changed',
+      uploadTask.on(
+        "state_changed",
         (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
           switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
+            case "paused":
+              console.log("Upload is paused");
               break;
-            case 'running':
-              console.log('Upload is running');
+            case "running":
+              console.log("Upload is running");
               break;
           }
-        }, 
+        },
         (error) => {
           switch (error.code) {
-            case 'storage/unauthorized':
+            case "storage/unauthorized":
               break;
-            case 'storage/canceled':
+            case "storage/canceled":
               break;
-            case 'storage/unknown':
+            case "storage/unknown":
               break;
           }
-          console.log(error)
-        }, 
+          console.log(error);
+        },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
-
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateProfile(res.user, {
               uid: res.user.uid,
               displayName,
               email,
-              photoUrl: getDownloadURL
+              photoUrl: getDownloadURL,
             });
 
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
               email,
-              photoURL: downloadURL
+              photoURL: downloadURL,
             });
-        
+
             await setDoc(doc(db, "userChats", res.user.uid), {});
 
             navigate("/");
           });
         }
       );
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className="form-container">
@@ -85,8 +86,10 @@ export const Register = () => {
           <input type="file" />
           <button>Sign Up</button>
         </form>
-        <p>Do you have an account? <Link to="/login">Login</Link></p>
+        <p>
+          Do you have an account? <Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
-  )
-}
+  );
+};

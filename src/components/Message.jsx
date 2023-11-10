@@ -1,9 +1,9 @@
-import React from 'react'
+/** @format */
+
+import React from "react";
 
 const Message = () => {
-  return (
-    <div>Message</div>
-  )
-}
+  return <div>Message</div>;
+};
 
-export default Message
+export default Message;

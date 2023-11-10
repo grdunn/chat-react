@@ -1,6 +1,8 @@
-import React from 'react'
-import { signOut } from 'firebase/auth';
-import { auth } from '../firebase';
+/** @format */
+
+import React from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Navbar = () => {
   return (
@@ -8,7 +10,7 @@ const Navbar = () => {
       <span>Chat</span>
       <button onClick={() => signOut(auth)}>Logout</button>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

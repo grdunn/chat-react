@@ -1,6 +1,8 @@
-import React from 'react'
-import Messages from './Messages'
-import Input from './Input'
+/** @format */
+
+import React from "react";
+import Messages from "./Messages";
+import Input from "./Input";
 
 const Chat = () => {
   return (
@@ -8,7 +10,7 @@ const Chat = () => {
       <Messages />
       <Input />
     </div>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;

@@ -1,5 +1,7 @@
-import React from 'react'
-import Message from './Message'
+/** @format */
+
+import React from "react";
+import Message from "./Message";
 
 const Messages = () => {
   return (
@@ -11,7 +13,7 @@ const Messages = () => {
       <Message />
       <Message />
     </div>
-  )
-}
+  );
+};
 
-export default Messages
+export default Messages;

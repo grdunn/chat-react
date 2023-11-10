@@ -6,8 +6,6 @@ import { doc, setDoc } from "firebase/firestore";
 
 export const Register = () => {
 
-  const [err, setErr] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -51,9 +49,15 @@ export const Register = () => {
               displayName,
               email,
               photoUrl: getDownloadURL
-            })
+            });
+            console.log("sucess");
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL
+            });
           });
-          console.log('success');
         }
       );
       

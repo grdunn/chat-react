@@ -3,8 +3,11 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth, storage, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore"; 
+import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ export const Register = () => {
         }, 
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
-            
+
             await updateProfile(res.user, {
               uid: res.user.uid,
               displayName,
@@ -52,7 +55,6 @@ export const Register = () => {
               photoUrl: getDownloadURL
             });
 
-            console.log("sucess");
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
@@ -60,7 +62,9 @@ export const Register = () => {
               photoURL: downloadURL
             });
         
-            await setDoc(doc(db, "userChats", res.user.uid, {} ))
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+
+            navigate("/");
           });
         }
       );
@@ -81,7 +85,7 @@ export const Register = () => {
           <input type="file" />
           <button>Sign Up</button>
         </form>
-        <p>Do you have an account? Login.</p>
+        <p>Do you have an account? <Link to="/login">Login</Link></p>
       </div>
     </div>
   )

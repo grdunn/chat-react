@@ -3,8 +3,12 @@
 import React from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
+
+  const {currentUser} = useContent(AuthContext)
+ 
   return (
     <div className="navbar">
       <span>Chat</span>

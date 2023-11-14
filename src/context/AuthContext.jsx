@@ -1,5 +1,3 @@
-/** @format */
-
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";

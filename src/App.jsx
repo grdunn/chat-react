@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 import "/node_modules/normalize.css/normalize.css";
+import "./styles/index.scss";
 import "./style.scss";
 
 function App() {

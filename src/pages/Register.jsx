@@ -4,9 +4,12 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth, storage, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 
 export const Register = () => {
   const navigate = useNavigate();
+
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +29,7 @@ export const Register = () => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
+          setProgress(progress);
           switch (snapshot.state) {
             case "paused":
               console.log("Upload is paused");
@@ -75,6 +79,11 @@ export const Register = () => {
 
   return (
     <div className="bg-slate-50 h-screen w-full px-6 form flex justify-center items-center">
+      <LoadingBar
+        color="#2563EB"
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <div className="mx-auto w-full  md:max-w-md">
         <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Register your account.
@@ -94,7 +103,7 @@ export const Register = () => {
                     id="displayName"
                     name="displayName"
                     type="text"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -110,7 +119,7 @@ export const Register = () => {
                     id="email"
                     name="email"
                     type="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -128,7 +137,7 @@ export const Register = () => {
                     id="password"
                     name="password"
                     type="password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -177,7 +186,7 @@ export const Register = () => {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
                   Sign up
                 </button>
@@ -188,7 +197,7 @@ export const Register = () => {
         <p className="mt-10 text-center text-sm text-gray-500">
           Already have an account?
           <Link
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 ml-2"
+            className="font-semibold leading-6 text-blue-600 hover:text-blue-500 ml-2"
             to="/login"
           >
             Log in.

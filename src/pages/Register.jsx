@@ -52,11 +52,10 @@ export const Register = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            console.log('downloadURL: ' + downloadURL)
             await updateProfile(res.user, {
-              uid: res.user.uid,
               displayName,
-              email,
-              photoUrl: getDownloadURL,
+              photoURL: downloadURL,
             });
 
             await setDoc(doc(db, "users", res.user.uid), {
@@ -78,13 +77,13 @@ export const Register = () => {
   };
 
   return (
-    <div className="bg-slate-50 h-screen w-full px-6 form flex justify-center items-center">
+    <div className="bg-slate-50 min-h-screen w-full p-20 form flex justify-center items-center">
       <LoadingBar
         color="#2563EB"
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
-      <div className="mx-auto w-full  md:max-w-md">
+      <div className="mx-auto w-full md:max-w-md">
         <div className="flex justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

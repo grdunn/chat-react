@@ -21,7 +21,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="bg-slate-50 h-screen w-full px-6 form flex justify-center items-center">
+    <div className="bg-slate-50 min-h-screen w-full px-6 form flex justify-center items-center">
       <div className="mx-auto w-full  md:max-w-md">
         <div className="flex justify-center">
           <svg
@@ -47,12 +47,12 @@ export const Login = () => {
             <div className="space-y-6">
               <div>
                 <label
-                  for="email"
-                  class="block text-sm font-medium leading-6 text-gray-900"
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Email
                 </label>
-                <div class="mt-2">
+                <div className="mt-2">
                   <input
                     id="email"
                     name="email"
@@ -62,23 +62,23 @@ export const Login = () => {
                 </div>
               </div>
               <div>
-                <div class="flex items-center justify-between">
+                <div className="flex items-center justify-between">
                   <label
-                    for="password"
-                    class="block text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="password"
+                    className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Password
                   </label>
-                  <div class="text-sm">
+                  <div className="text-sm">
                     <a
                       href="#"
-                      class="font-semibold text-blue-600 hover:text-blue-500"
+                      className="font-semibold text-blue-600 hover:text-blue-500"
                     >
                       Forgot password?
                     </a>
                   </div>
                 </div>
-                <div class="mt-2">
+                <div className="mt-2">
                   <input
                     id="password"
                     name="password"
@@ -90,7 +90,7 @@ export const Login = () => {
               <div>
                 <button
                   type="submit"
-                  class="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
                   Login
                 </button>
@@ -98,7 +98,7 @@ export const Login = () => {
             </div>
           </form>
         </div>
-        <p class="mt-10 text-center text-sm text-gray-500">
+        <p className="mt-10 text-center text-sm text-gray-500">
           Need to set up a new account?
           <Link
             className="font-semibold leading-6 text-blue-600 hover:text-blue-500 ml-2"

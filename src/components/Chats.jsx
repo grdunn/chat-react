@@ -12,7 +12,7 @@ const Chats = () => {
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-        setChats(doc.data());
+        if (doc.exists()) setChats(doc.data());
       });
 
       return () => {
@@ -22,25 +22,26 @@ const Chats = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
+
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
 
+
   return (
-    <div className="chats">
-      <h3>Chats</h3>
+    <div className="chats h-full overflow-auto mt-10">
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat) => (
           <div
-            className="userChat"
+            className="userChat flex mb-6 items-center"
             key={chat[0]}
             onClick={() => handleSelect(chat[1].userInfo)}
           >
-            <img src={chat[1].userInfo.photoURL} alt="" />
-            <div className="userChatInfo">
-              <span>{chat[1].userInfo.displayName}</span>
-              <p>{chat[1].lastMessage?.text}</p>
+            <img className="rounded-full w-12 h-12" src={chat[1].userInfo.photoURL} alt="" />
+            <div className="userChatInfo ml-4">
+              <span className="font-medium">{chat[1].userInfo.displayName}</span>
+              <p className="font-light">{chat[1].lastMessage?.text}</p>
             </div>
           </div>
         ))}

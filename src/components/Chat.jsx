@@ -9,10 +9,12 @@ const Chat = () => {
   const { data } = useContext(ChatContext);
 
   return (
-    <div className="chat">
+    <div className="chat ml-80 p-10">
+      <div className="chat__inner">
       <span>{data.user?.displayName}</span>
       <Messages />
       <Input />
+      </div>
     </div>
   );
 };

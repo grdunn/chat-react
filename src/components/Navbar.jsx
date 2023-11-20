@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <span>Chat</span>
+      <h1>{currentUser.displayName}</h1>
       <button onClick={() => signOut(auth)}>Logout</button>
     </div>
   );

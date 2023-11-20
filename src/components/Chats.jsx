@@ -12,7 +12,13 @@ const Chats = () => {
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-        if (doc.exists()) setChats(doc.data());
+        if (doc.exists()) {
+          const sorted = Object.entries(doc.data()).sort(
+            (a, b) => b[1].date - a[1].date
+          );
+          setChats(sorted);
+          dispatch({ type: "CHANGE_USER", payload: sorted[0][1].userInfo });
+        }
       });
 
       return () => {
@@ -22,29 +28,25 @@ const Chats = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
-
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
 
-
   return (
     <div className="chats h-full overflow-auto mt-10">
-      {Object.entries(chats)
-        ?.sort((a, b) => b[1].date - a[1].date)
-        .map((chat) => (
-          <div
-            className="userChat flex mb-6 items-center"
-            key={chat[0]}
-            onClick={() => handleSelect(chat[1].userInfo)}
-          >
-            <img className="rounded-full w-12 h-12" src={chat[1].userInfo.photoURL} alt="" />
-            <div className="userChatInfo ml-4">
-              <span className="font-medium">{chat[1].userInfo.displayName}</span>
-              <p className="font-light">{chat[1].lastMessage?.text}</p>
-            </div>
+      {chats?.map((chat) => (
+        <div
+          className="userChat flex items-center hover:cursor-pointer"
+          key={chat[0]}
+          onClick={() => handleSelect(chat[1].userInfo)}
+        >
+          <div className=""></div>
+          <div className="userChatInfo mb-5">
+            <p className="font-medium mb-1">{chat[1].userInfo.displayName}</p>
+            <p className="text-sm">{chat[1].lastMessage?.text}</p>
           </div>
-        ))}
+        </div>
+      ))}
     </div>
   );
 };

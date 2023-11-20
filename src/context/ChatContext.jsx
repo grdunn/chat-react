@@ -20,6 +20,11 @@ export const ChatContextProvider = ({ children }) => {
               ? currentUser.uid + action.payload.uid
               : action.payload.uid + currentUser.uid,
         };
+      case "RESET_CHAT":
+        return {
+          user: action.payload,
+          chatId: "null",
+        };
       default:
         return state;
     }

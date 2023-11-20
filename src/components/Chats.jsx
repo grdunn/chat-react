@@ -17,7 +17,6 @@ const Chats = () => {
             (a, b) => b[1].date - a[1].date
           );
           setChats(sorted);
-          dispatch({ type: "CHANGE_USER", payload: sorted[0][1].userInfo });
         }
       });
 
@@ -26,7 +25,7 @@ const Chats = () => {
       };
     };
     currentUser.uid && getChats();
-  }, [currentUser.uid]);
+  }, []);
 
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });

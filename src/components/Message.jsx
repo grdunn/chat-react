@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+import { db } from "../firebase";
+import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
@@ -8,6 +10,19 @@ const Message = ({ message }) => {
 
   const ref = useRef();
   const timeSent = new Date(message.date.seconds).toLocaleString();
+
+  const handleDelete = async () => {
+    // TODO: Need a modal to confirm where to delete!
+    // Also need to update the UserChats last message
+    // it currently displays the delete message. :D
+    try {
+      await updateDoc(doc(db, "chats", data.chatId), {
+        messages: arrayRemove(message),
+      });
+    } catch (err) {
+      console.log("error :" + err);
+    }
+  };
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -43,6 +58,11 @@ const Message = ({ message }) => {
         </p>
         {message.img && <img src={message.img} alt="" />}
         <span className="text-xs text-slate-400">{timeSent}</span>
+        <button onClick={handleDelete} className="text-xs text-slate-400 ml-5">
+          Delete
+        </button>
+
+        {/* await deleteDoc(doc(db, "cities", "DC")); */}
       </div>
     </div>
   );

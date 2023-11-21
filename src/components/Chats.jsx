@@ -32,20 +32,27 @@ const Chats = () => {
   };
 
   return (
-    <div className="chats h-full overflow-auto mt-10">
-      {chats?.map((chat) => (
-        <div
-          className="userChat flex items-center hover:cursor-pointer"
-          key={chat[0]}
-          onClick={() => handleSelect(chat[1].userInfo)}
-        >
-          <div className=""></div>
-          <div className="userChatInfo mb-5">
-            <p className="font-medium mb-1">{chat[1].userInfo.displayName}</p>
-            <p className="text-sm">{chat[1].lastMessage?.text}</p>
+    <div className="chats overflow-auto">
+      <ul role="list" class="divide-y divide-gray-100">
+      <li className="h-24 flex px-8 justify-between gap-x-6 py-5">
+        <div className="flex min-w-0 gap-x-4 items-center">
+          <div className="min-w-0 flex-auto">
+            <p className="font-semibold leading-6 text-gray-700">All conversations</p>
           </div>
         </div>
+      </li>
+      {chats?.map((chat) => (
+        <li key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)} className="h-24 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-50 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={chat[1].userInfo.photoURL} alt=""/>
+            <div className="min-w-0 flex-auto">
+              <p className="font-semibold leading-6 text-gray-700">{chat[1].userInfo.displayName}</p>
+              <p className="truncate text-sm font-light leading-5 text-gray-700">{chat[1].lastMessage?.text}</p>
+            </div>
+          </div>
+        </li>
       ))}
+      </ul>
     </div>
   );
 };

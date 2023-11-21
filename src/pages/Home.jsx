@@ -17,8 +17,8 @@ export const Home = () => {
 
   return (
     <div className="home ">
-      <header className="flex justify-center header border-b sticky top-0 left-0 w-full bg-white z-50">
-        <div className="ml-10 mr-10 mx-auto pt-2 pb-2 flex justify-between max-w-5xl w-full">
+      <header className="h-20 flex justify-center header border-b absolute top-0 left-0 w-full bg-white z-50">
+        <div className="ml-10 mr-10 mx-auto pt-4 pb-4 flex justify-between w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -34,6 +34,12 @@ export const Home = () => {
             />
           </svg>
           <div className="flex items-center">
+            <nav>
+              <ul className="flex">
+                <li><a className="text-sm font-medium mr-6"href="#">Code</a></li>
+                <li><a className="text-sm font-medium mr-6"href="#">Credit</a></li>
+              </ul>
+            </nav>
             <div className="relative mr-6">
               <img
                 className="rounded-full w-8 h-8"
@@ -42,13 +48,13 @@ export const Home = () => {
               />
               <span className="top-0 left-6 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
             </div>
-            <button className="font-light" onClick={handleSignOut}>
+            <button className="text-sm font-medium" onClick={handleSignOut}>
               Logout
             </button>
           </div>
         </div>
       </header>
-      <div className="relative max-w-5xl mx-auto">
+      <div className="relative flex offset-container">
         <Sidebar />
         <Chat />
       </div>

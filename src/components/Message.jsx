@@ -36,28 +36,30 @@ const Message = ({ message }) => {
       } flex mb-8`}
     >
       <div className="messageInfo">
-        <img
-          className="rounded-full w-12 h-12"
-          src={
-            message.senderId === currentUser.uid
-              ? currentUser.photoURL
-              : data.user.photoURL
-          }
-          alt=""
-        />
+        {message.senderId === currentUser.uid || (
+          <img
+            className="rounded-full w-12 h-12"
+            src={
+              message.senderId === currentUser.uid
+                ? currentUser.photoURL
+                : data.user.photoURL
+            }
+            alt=""
+          />
+        )}
       </div>
       <div className={`messageContent mr-8 ml-8 self-start`}>
         <p
-          className={`p-3 rounded-lg max-w-sm ${
+          className={`font-light p-3 rounded-lg max-w-sm ${
             message.senderId === currentUser.uid
               ? "bg-blue-600 text-white"
-              : "bg-slate-100"
+              : "bg-white"
           }`}
         >
           {message.text}
         </p>
         {message.img && <img src={message.img} alt="" />}
-        <span className="text-xs text-slate-400">{timeSent}</span>
+        <span className="text-xs font-light text-slate-400">{timeSent}</span>
         <button onClick={handleDelete} className="text-xs text-slate-400 ml-5">
           Delete
         </button>

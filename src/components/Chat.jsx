@@ -9,15 +9,19 @@ const Chat = () => {
   const { data } = useContext(ChatContext);
 
   return (
-    <div className="chat ml-80 p-10 max-w-4xl h-full">
-      <div className="chat__inner relative">
-        <h2 className="text-2xl font-extrabold text-slate-900">
-          {data.user?.displayName}
-        </h2>
+    <div className="chat w-full flex flex-col">
+      <div className="chat__recipient bg-slate-50 h-20 border-b flex-none px-10 flex items-center">
+        <p className="font-light text-slate-900">
+          To: {data.user?.displayName}
+        </p>
+      </div>
+      <div className="chat__inner bg-slate-50 p-10 relative overflow-scroll h-full">
         <Messages />
-        <div className="">
-          <Input />
-        </div>
+        {data.chatId != 'null' && (
+          <div className="">
+            {/* <Input /> */}
+          </div>
+        )}
       </div>
     </div>
   );

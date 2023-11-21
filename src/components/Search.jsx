@@ -82,14 +82,14 @@ const Search = () => {
 
   return (
     <div className="search">
-      <div className="mt-2">
+      <div className="border-b">
         <input
           type="text"
           placeholder="Find a user"
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
           value={username}
-          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:text-sm sm:leading-6"
+          className="p-8 block w-full h-20 rounded-md border-none text-gray-900 ring-none ring-inset ring-gray-300 placeholder:text-gray-500 placeholder:font-light focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:text-sm sm:leading-6"
         />
       </div>
       {err && <span>{err.message}</span>}

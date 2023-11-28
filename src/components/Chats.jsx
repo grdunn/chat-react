@@ -52,6 +52,33 @@ const Chats = () => {
           </div>
         </li>
       ))}
+      <li className="h-24 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-50 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img className="h-12 w-12 flex-none rounded-full bg-gray-50"alt=""/>
+            <div className="min-w-0 flex-auto">
+              <p className="font-semibold leading-6 text-gray-700">Test Name</p>
+              <p className="truncate text-sm font-light leading-5 text-gray-700">Last Message</p>
+            </div>
+          </div>
+        </li>
+        <li className="h-24 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-50 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img className="h-12 w-12 flex-none rounded-full bg-gray-50"alt=""/>
+            <div className="min-w-0 flex-auto">
+              <p className="font-semibold leading-6 text-gray-700">Test Name</p>
+              <p className="truncate text-sm font-light leading-5 text-gray-700">Last Message</p>
+            </div>
+          </div>
+        </li>
+        <li className="h-24 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-50 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img className="h-12 w-12 flex-none rounded-full bg-gray-50"alt=""/>
+            <div className="min-w-0 flex-auto">
+              <p className="font-semibold leading-6 text-gray-700">Test Name</p>
+              <p className="truncate text-sm font-light leading-5 text-gray-700">Last Message</p>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   );

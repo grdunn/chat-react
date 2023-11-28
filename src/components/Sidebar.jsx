@@ -4,7 +4,7 @@ import Chats from "./Chats";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar w-80 border-r flex-none">
+    <div className="sidebar w-80 border-r flex-none h-full overflow-scroll">
       <Search />
       <Chats />
     </div>

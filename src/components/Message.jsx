@@ -63,10 +63,9 @@ const Message = ({ message }) => {
         <button onClick={handleDelete} className="text-xs text-slate-400 ml-5">
           Delete
         </button>
-
-        {/* await deleteDoc(doc(db, "cities", "DC")); */}
       </div>
     </div>
+    
   );
 };
 

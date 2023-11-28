@@ -22,7 +22,7 @@ export const ChatContextProvider = ({ children }) => {
         };
       case "RESET_CHAT":
         return {
-          user: action.payload,
+          user: "null",
           chatId: "null",
         };
       default:

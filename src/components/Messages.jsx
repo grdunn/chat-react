@@ -20,6 +20,11 @@ const Messages = () => {
 
   return (
     <div className="messages">
+      {!messages.length && (
+        <div className="flex items-center justify-center h-full">
+          Choose a chat to start.👨‍💻
+        </div>
+      )}
       {messages.map((m) => (
         <Message message={m} key={m.id} />
       ))}

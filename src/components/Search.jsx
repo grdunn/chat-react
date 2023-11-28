@@ -12,12 +12,14 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     const q = query(
@@ -28,10 +30,13 @@ const Search = () => {
     try {
       const querySnapshot = await getDocs(q);
       // TODO: If no user is found, remove the previous user.
-      querySnapshot.forEach((doc) => {
-        setUser(doc.data());
-        // is !res.exists()
-      });
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((doc) => {
+          setUser(doc.data());
+        });
+      } else {
+        setUser(null);
+      }
     } catch (err) {
       setErr(err);
     }
@@ -54,8 +59,13 @@ const Search = () => {
         // create a chat in chats collections
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
       }
-      console.log('selected user: ' + user.photoURL);
-      console.log('current user: ' + currentUser.displayName + ' : ' + currentUser.photoURL)
+      console.log("selected user: " + user.photoURL);
+      console.log(
+        "current user: " +
+          currentUser.displayName +
+          " : " +
+          currentUser.photoURL
+      );
       await updateDoc(doc(db, "userChats", currentUser.uid), {
         [combinedId + ".userInfo"]: {
           uid: user.uid,
@@ -73,6 +83,7 @@ const Search = () => {
         },
         [combinedId + ".date"]: serverTimestamp(),
       });
+      dispatch({ type: "CHANGE_USER", payload: user });
     } catch (err) {
       setErr(err);
     }
@@ -82,20 +93,22 @@ const Search = () => {
 
   return (
     <div className="search">
-      <div className="border-b">
+      <div className="p-4">
         <input
           type="text"
           placeholder="Find a user"
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
           value={username}
-          className="p-8 block w-full h-20 rounded-md border-none text-gray-900 ring-none ring-inset ring-gray-300 placeholder:text-gray-500 placeholder:font-light focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:text-sm sm:leading-6"
+          className="p-6 h-12 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:leading-6"
         />
       </div>
       {err && <span>{err.message}</span>}
       {user && (
-        <div>
-          <button onClick={handleSelect}>{user.displayName}</button>
+        <div className="border-t border-b z-1 bg-white hover:bg-slate-50 hover:cursor-pointer">
+          <button className="px-9 py-3 w-full text-left" onClick={handleSelect}>
+            {user.displayName}
+          </button>
         </div>
       )}
     </div>

@@ -25,7 +25,8 @@ const Message = ({ message }) => {
   };
 
   useEffect(() => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    // behavior: smooth
+    ref.current?.scrollIntoView({});
   }, [message]);
 
   return (
@@ -65,7 +66,6 @@ const Message = ({ message }) => {
         </button>
       </div>
     </div>
-    
   );
 };
 

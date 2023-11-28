@@ -100,7 +100,7 @@ const Search = () => {
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
           value={username}
-          className="bg-transparent p-6 h-12 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-900 bg-transparent focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:leading-6"
+          className="bg-transparent p-6 h-12 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-900 placeholder:font-light bg-transparent focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:leading-6"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"

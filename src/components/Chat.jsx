@@ -26,8 +26,8 @@ const Chat = () => {
       </div>
       <div
         className={` ${
-          data.user.displayName ? "w-1/3" : "hidden"
-        } h-full overflow-scroll p-8 chat flex flex-col bg-slate-50 items-center border-l`}
+          data.user.displayName ? "w-80" : "hidden"
+        } h-full flex-none overflow-scroll p-8 chat flex flex-col bg-slate-50 items-center border-l`}
       >
         {data.user && (
           <>

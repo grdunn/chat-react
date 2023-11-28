@@ -47,7 +47,7 @@ const Chats = () => {
                 alt=""
               />
               <div className="min-w-0 flex-auto">
-                <p className="text-slate-900 font-normal leading-6">
+                <p className="text-slate-900 font-light leading-6">
                   {chat[1].userInfo.displayName}
                 </p>
                 <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
@@ -57,6 +57,91 @@ const Chats = () => {
             </div>
           </li>
         ))}
+        <li className="h-20 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-100 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img
+              className="h-12 w-12 flex-none rounded-full bg-gray-50"
+              src=""
+              alt=""
+            />
+            <div className="min-w-0 flex-auto">
+              <p className="text-slate-900 font-light leading-6">
+                Display Name
+              </p>
+              <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
+                Example text
+              </p>
+            </div>
+          </div>
+        </li>
+        <li className="h-20 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-100 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img
+              className="h-12 w-12 flex-none rounded-full bg-gray-50"
+              src=""
+              alt=""
+            />
+            <div className="min-w-0 flex-auto">
+              <p className="text-slate-900 font-light leading-6">
+                Display Name
+              </p>
+              <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
+                Example text
+              </p>
+            </div>
+          </div>
+        </li>
+        <li className="h-20 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-100 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img
+              className="h-12 w-12 flex-none rounded-full bg-gray-50"
+              src=""
+              alt=""
+            />
+            <div className="min-w-0 flex-auto">
+              <p className="text-slate-900 font-light leading-6">
+                Display Name
+              </p>
+              <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
+                Example text
+              </p>
+            </div>
+          </div>
+        </li>
+        <li className="h-20 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-100 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img
+              className="h-12 w-12 flex-none rounded-full bg-gray-50"
+              src=""
+              alt=""
+            />
+            <div className="min-w-0 flex-auto">
+              <p className="text-slate-900 font-light leading-6">
+                Display Name
+              </p>
+              <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
+                Example text
+              </p>
+            </div>
+          </div>
+        </li>
+        <li className="h-20 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-100 hover:cursor-pointer">
+          <div className="flex min-w-0 gap-x-4 items-center">
+            <img
+              className="h-12 w-12 flex-none rounded-full bg-gray-50"
+              src=""
+              alt=""
+            />
+            <div className="min-w-0 flex-auto">
+              <p className="text-slate-900 font-light leading-6">
+                Display Name
+              </p>
+              <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
+                Example text
+              </p>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   );

@@ -18,7 +18,7 @@ export const Home = () => {
   return (
     <div className="home ">
       <header className="h-20 flex justify-center header absolute top-0 left-0 w-full bg-white z-50">
-        <div className="logo w-96 flex-none flex items-center pl-10 bg-white border-r">
+        <div className="bg-white logo w-96 flex-none flex items-center pl-10 bg-white border-r">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -34,7 +34,7 @@ export const Home = () => {
             />
           </svg>
         </div>
-        <div className="mr-10 mx-auto pt-4 pb-4 flex justify-end w-full border-b">
+        <div className="mx-auto pt-4 pr-10 pb-4 flex justify-end w-full border-b">
           <div className="flex items-center">
             <nav>
               <ul className="flex">

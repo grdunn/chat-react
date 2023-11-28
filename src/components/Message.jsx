@@ -50,20 +50,27 @@ const Message = ({ message }) => {
         )}
       </div>
       <div className={`messageContent mr-8 ml-8 self-start`}>
-        <p
-          className={`font-light p-3 rounded-lg max-w-sm ${
-            message.senderId === currentUser.uid
-              ? "bg-blue-600 text-white"
-              : "bg-white"
-          }`}
-        >
-          {message.text}
-        </p>
-        {message.img && <img src={message.img} alt="" />}
+        {message.img && <img className="mb-6" src={message.img} alt="" />}
+        {message.text && (
+          <p
+            className={`font-light p-3 rounded-lg max-w-sm ${
+              message.senderId === currentUser.uid
+                ? "bg-blue-600 text-white"
+                : "bg-white"
+            }`}
+          >
+            {message.text}
+          </p>
+        )}
         <span className="text-xs font-light text-slate-400">{timeSent}</span>
-        <button onClick={handleDelete} className="text-xs text-slate-400 ml-5">
-          Delete
-        </button>
+        {message.senderId === currentUser.uid && (
+          <button
+            onClick={handleDelete}
+            className="text-xs text-slate-400 ml-5"
+          >
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

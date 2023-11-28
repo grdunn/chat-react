@@ -19,10 +19,10 @@ const Messages = () => {
   }, [data.chatId]);
 
   return (
-    <div className="messages">
+    <div className="messages h-full">
       {!messages.length && (
         <div className="flex items-center justify-center h-full">
-          Choose a chat to start.👨‍💻
+          Choose a chat to start. 👨‍💻
         </div>
       )}
       {messages.map((m) => (

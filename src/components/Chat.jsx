@@ -8,8 +8,6 @@ import { ChatContext } from "../context/ChatContext";
 const Chat = () => {
   const { data } = useContext(ChatContext);
 
-  console.log(data.user);
-
   return (
     <>
       <div
@@ -17,11 +15,6 @@ const Chat = () => {
           data.user.displayName ? "w-2/3" : "w-full"
         } chat w-full flex flex-col bg-slate-50`}
       >
-        <div className="chat__recipient bg-slate-50 h-20 border-b flex-none px-10 flex items-center">
-          <p className="font-light text-slate-900">
-            To: {data.user?.displayName}
-          </p>
-        </div>
         <div className="chat__inner bg-slate-50 p-10 relative overflow-scroll h-full">
           <Messages />
         </div>
@@ -34,7 +27,7 @@ const Chat = () => {
       <div
         className={` ${
           data.user.displayName ? "w-1/3" : "hidden"
-        } h-full overflow-scroll p-8 border-l chat flex flex-col bg-slate-50 items-center`}
+        } h-full overflow-scroll p-8 chat flex flex-col bg-slate-50 items-center border-l`}
       >
         {data.user && (
           <>
@@ -55,36 +48,35 @@ const Chat = () => {
             </div>
             <div className="mt-6 w-full pt-5">
               <h3 className="font-bold">Personal Information</h3>
-
-              <div class="mt-6 relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <div className="mt-6 relative overflow-x-auto">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                   <tbody>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-0 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-0 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Phone
                       </th>
-                      <td class="px-0 py-2">914-486-0871</td>
+                      <td className="px-0 py-2">914-486-0871</td>
                     </tr>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-0 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-0 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         DOB
                       </th>
-                      <td class="px-0 py-2">01/08/1989</td>
+                      <td className="px-0 py-2">01/08/1989</td>
                     </tr>
-                    <tr class=" dark:bg-gray-800">
+                    <tr className=" dark:bg-gray-800">
                       <th
                         scope="row"
-                        class="px-0 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-0 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Language
                       </th>
-                      <td class="px-0 py-2">English</td>
+                      <td className="px-0 py-2">English</td>
                     </tr>
                   </tbody>
                 </table>

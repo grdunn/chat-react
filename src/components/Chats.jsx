@@ -33,12 +33,12 @@ const Chats = () => {
 
   return (
     <div className="chats overflow-auto">
-      <ul role="list" className="divide-y divide-gray-100">
+      <ul role="list" className="">
         {chats?.map((chat) => (
           <li
             key={chat[0]}
             onClick={() => handleSelect(chat[1].userInfo)}
-            className="h-24 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-50 hover:cursor-pointer"
+            className="h-20 flex px-8 justify-between gap-x-6 py-5 hover:bg-slate-100 hover:cursor-pointer"
           >
             <div className="flex min-w-0 gap-x-4 items-center">
               <img
@@ -47,10 +47,10 @@ const Chats = () => {
                 alt=""
               />
               <div className="min-w-0 flex-auto">
-                <p className="font-semibold leading-6 text-gray-700">
+                <p className="text-slate-900 font-normal leading-6">
                   {chat[1].userInfo.displayName}
                 </p>
-                <p className="truncate text-sm font-light leading-5 text-gray-700">
+                <p className="text-slate-900 truncate text-sm font-light leading-5 opacity-50">
                   {chat[1].lastMessage?.text}
                 </p>
               </div>
